@@ -1,0 +1,86 @@
+@mixin hoverStyle {
+    color: rgb(226, 107, 127);
+    border-bottom: 2px solid rgb(240, 157, 171);
+    cursor: pointer;
+}
+
+#navbar-container{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-bottom: 0.5px solid rgb(197, 193, 193);
+    
+    .navbar{
+        display:flex;
+        align-items: center;
+        box-sizing: border-box;
+        width: 80%;
+        margin: auto;
+        justify-content: space-between;
+        padding: 8px;
+        height: auto;
+        min-height: 70px;
+        max-height: 80px;
+
+        .midNavbar{
+            box-sizing: border-box;
+            flex: 0.8;
+            margin:auto;
+            height: 100%;
+            display:flex;
+            align-items: center;
+            border:0.5px solid grey;
+            border-radius: 5px;
+            padding: 10px;
+            
+            input{
+                width: 100%;
+                font-size: 1em;
+                border: none;
+                outline: none;
+            }
+
+        }
+    
+        .rightNavbar{
+            display:flex;
+            align-items: center;
+            gap: 20px;
+
+            .app-dwl{
+                display: flex;
+                align-items: center;
+                &:hover{
+                    @include hoverStyle();
+                }
+            }
+    
+            .profile-container{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                &:hover{
+                    @include hoverStyle();
+                }
+            }
+            .vertical-line{
+               border-left:0.5px solid rgb(197, 193, 193);;
+                height: 40px;
+            }
+            .seller{
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+
+            .cart-cont{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

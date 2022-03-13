@@ -1,0 +1,27 @@
+#menu{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-bottom: 0.5px solid rgb(197, 193, 193);
+    
+    .menu-list{
+        width: 80%;
+        padding: 0 8px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        min-height: 50px;
+        gap: 5px;
+        div{
+            height: 100%;
+            font-size: 1em;
+            text-transform: capitalize;
+            letter-spacing: 0.5px;
+          
+            &:hover{
+                color: rgb(228, 105, 125);
+                cursor: pointer;
+            }
+        }
+    }
+}
