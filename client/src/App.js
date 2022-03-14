@@ -1,9 +1,18 @@
-import { Header } from "./components/Header/Header";
+
+import { Home } from "./components/Home/Home";
+import { Switch, Route } from "react-router-dom"
+import { MyCart } from "./components/Cart/MyCart";
 function App() {
   return (
     <div className="App">
-      <Header />
-      <h1>Meesho</h1>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/mycart">
+          <MyCart />
+        </Route>
+      </Switch>
     </div>
   );
 }

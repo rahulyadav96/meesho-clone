@@ -1,0 +1,95 @@
+.card-wrapper{
+    width: 23%;
+    box-sizing: border-box;
+    height: auto;
+    border: 0.5px solid rgb(226, 221, 221);
+    cursor: pointer;
+    color: rgb(110, 99, 99);
+
+    .prod-img{
+        width: 100%;
+        height: 280px;
+        position: relative;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+
+        .moreItems{
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            background-color: white;
+            border-top-left-radius: 5px;
+            padding: 5px;
+            font-size: 0.9em
+        }
+    }
+
+    .prod-info{
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+        .prod-name{
+            font-size: 1.2em;
+            margin: 0;
+        }
+        .prize{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            .curr-prize{
+                font-size: 1.5em;
+                color: black;
+                font-weight: 500;
+            }
+            .discount{
+                font-size: 1.2em;
+                color: green;
+            }
+        }
+
+        .first-order{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .cancelicon{
+                color: green;
+                font-size: 1em;
+            }
+        }
+        .delivery{
+            font-size: 0.8em;
+            background-color: rgb(247, 241, 241);
+            padding: 3px 8px ;
+            border-radius: 10px;
+            color: grey;
+            font-weight: 500;
+        }
+
+        .feedback{
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8em;
+            .ratting{
+                background-color: green;
+                color: white;
+                padding: 5px 10px;
+                border-radius: 15px;
+                font-size: 1.5em;
+                display: flex;
+                align-items: center;
+                .star{
+                    font-size: 1em;
+                }
+            }
+        }
+    }
+
+}
