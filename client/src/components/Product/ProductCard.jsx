@@ -1,9 +1,11 @@
 import "./productcard.scss";
 import StarIcon from '@mui/icons-material/Star';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { Link } from 'react-router-dom';
 export const ProductCard = ()=>{
     return (<>
             <div className="card-wrapper">
+            <Link to="/aboutproduct">
                 <div className="prod-img">
                     <img  src="https://images.meesho.com/images/products/66590437/uowch_512.jpg"/>
                     <div className="moreItems">+2 More</div>
@@ -17,6 +19,7 @@ export const ProductCard = ()=>{
                         <span className="ratting">3.3<StarIcon className="star" /> </span> <span>6 Reviews</span>
                     </div>
                 </div>
+            </Link>
             </div>
     </>)
 }

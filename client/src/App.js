@@ -2,6 +2,7 @@
 import { Home } from "./components/Home/Home";
 import { Switch, Route } from "react-router-dom"
 import { MyCart } from "./components/Cart/MyCart";
+import { AboutProduct } from "./components/AboutProduct/AboutProduct";
 function App() {
   return (
     <div className="App">
@@ -11,6 +12,9 @@ function App() {
         </Route>
         <Route path="/mycart">
           <MyCart />
+        </Route>
+        <Route path="/aboutproduct">
+          <AboutProduct />
         </Route>
       </Switch>
     </div>

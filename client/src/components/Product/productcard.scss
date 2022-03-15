@@ -5,11 +5,16 @@
     border: 0.5px solid rgb(226, 221, 221);
     cursor: pointer;
     color: rgb(110, 99, 99);
+    a{
+        text-decoration: none;
+        color: inherit;
 
+    }
     .prod-img{
         width: 100%;
         height: 280px;
         position: relative;
+      
         img{
             width: 100%;
             height: 100%;
@@ -32,6 +37,7 @@
         flex-direction: column;
         justify-content: center;
         gap: 8px;
+        
         .prod-name{
             font-size: 1.2em;
             margin: 0;
