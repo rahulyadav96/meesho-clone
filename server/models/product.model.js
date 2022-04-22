@@ -7,9 +7,9 @@ const productSchema = new mongoose.Schema({
     oldPrice:{type:String, required:false},
     offer:{type:Number, required:false},
     rating:{type:Number, required:false},
-    reviews:[{type:Number, required:false}],
+    // reviews:[{type:Number, required:false}],
     sizes:[{type:String, required:true}],
-    otherImages:[{type:Number, required:false}],
+    // otherImages:[{type:Number, required:false}],
 },{
     versionKey:false,
     timestamps:true

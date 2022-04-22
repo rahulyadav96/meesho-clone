@@ -2,7 +2,7 @@ import "./productcard.scss";
 import StarIcon from '@mui/icons-material/Star';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { Link } from 'react-router-dom';
-export const ProductCard = ()=>{
+export const ProductCard = ({product})=>{
     return (<>
             <div className="card-wrapper">
             <Link to="/aboutproduct">
