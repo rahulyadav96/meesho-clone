@@ -10,6 +10,7 @@ export const AboutProduct = ({prodId})=>{
     const [loading,setLoading] = useState(false);
     const [error,setError] = useState(false);
     const [product,setProduct] = useState({});
+    const [size,setSize] = useState("")
     // useEffect(()=>{
     //     setLoading(true);
     //     axios.get(`/products/${prodId}`)
@@ -69,9 +70,13 @@ export const AboutProduct = ({prodId})=>{
                          <div className="size-container">
                              <Typography variant='h6'>Select Size</Typography>
                              <div className="prod-sizes">
-                                 <div className="size">
+                                 <div className={size=="Un Stitched"?"selected-size":"size"} onClick={()=>setSize("Un Stitched")}>
                                     <span>Un Stitched</span>
-
+                                    
+                                 </div>
+                                 <div className={size=="X"?"selected-size":"size"} onClick={()=>setSize("X")}>
+                                    <span>X</span>
+                                    
                                  </div>
                              </div>
                          </div>
