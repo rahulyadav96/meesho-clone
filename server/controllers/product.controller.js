@@ -7,9 +7,10 @@ const router = express.Router();
 router.get('/', async(req,res)=>{
     try{
         const products = await Product.find().lean().exec();
-        return res.status(200).json(products)
+        return res.status(200).json({products})
 
     }catch(err){
+       
         res.status(500).json({status:'fail', message:'somthing went wrong'});
     }
 })
@@ -18,10 +19,12 @@ router.get('/', async(req,res)=>{
 //create a new product
 router.post('/', async(req,res)=>{
     try{
-
+        
         const product = await Product.create(req.body);
+        
         res.status(200).json({product})
     }catch(err){
+        console.log(err)
         res.status(500).json({status:'fail', message:'somthing went wrong'});
     }
 })
@@ -53,7 +56,7 @@ router.delete('/:id',async(req,res)=>{
 })
 
 //get a single product
-router.delete('/:id',async(req,res)=>{
+router.get('/:id',async(req,res)=>{
     try{
 
         const product = await Product.findById(req.params.id).lean().exec();

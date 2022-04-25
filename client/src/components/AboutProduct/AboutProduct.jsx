@@ -37,7 +37,8 @@ export const AboutProduct = ({prodId})=>{
                         <div className="select-images"></div>
                         <div className="show-image">
                             <div className="image-container">
-                                <img src='https://images.meesho.com/images/products/87877389/ggyp1_512.jpg' alt="" />
+                            <img src="https://i.ibb.co/5KGrxGD/sharee.jpg" alt="sharee" border="0" />
+                
                             </div>
                             <div className="button-conatiner">
                                 <Button variant='contained' style={{backgroundColor:"rgb(244, 51, 151)", width:"100%", marginTop:"20px"}}> <ShoppingCartOutlinedIcon /> Add To Cart</Button>
