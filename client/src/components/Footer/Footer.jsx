@@ -38,8 +38,8 @@ export const Footer = () => {
 
                     </div>
                     <div className='download-app'>
-                        <img src='https://meesho.com/_next/static/images/google-play-button-1f2aa747a3eefa161840b04e057b31ac.png' />
-                        <img src='https://meesho.com/_next/static/images/appstore-button-4b171cf04fe0557718dfd2cbf309c61d.png' />
+                        <img src='https://images.meesho.com/images/pow/playstore-icon-big.png' />
+                        <img src='https://images.meesho.com/images/pow/appstore-icon-big.png' />
                     </div>
                 </div>
             </div>
