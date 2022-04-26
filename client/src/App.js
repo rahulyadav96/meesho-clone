@@ -13,7 +13,7 @@ function App() {
         <Route path="/mycart">
           <MyCart />
         </Route>
-        <Route path="/aboutproduct">
+        <Route path="/aboutproduct/:id">
           <AboutProduct />
         </Route>
       </Switch>

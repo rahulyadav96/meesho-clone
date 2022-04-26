@@ -41,6 +41,9 @@
         .prod-name{
             font-size: 1.2em;
             margin: 0;
+            white-space: nowrap;
+            overflow: hidden !important;
+            text-overflow: ellipsis;
         }
         .prize{
             display: flex;
