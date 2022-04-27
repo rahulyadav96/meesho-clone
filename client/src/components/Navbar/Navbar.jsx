@@ -3,8 +3,11 @@ import PhoneIphoneOutlinedIcon from '@mui/icons-material/PhoneIphoneOutlined';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import './navbar.scss'
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+
 export const Navbar = () => {
+    const { task } = useParams();
+
     return (
         <>
             <div id='navbar-container'>
@@ -16,37 +19,42 @@ export const Navbar = () => {
 
                         </Link>
                     </div>
-                    <div className="midNavbar">
+                    {
+                        task === "cart"|| task=="payment"|| task=="address"|| task =="summary" ? <div>Cart Navbar</div> : <>
 
-                        <SearchIcon />
-                        <input type="text" name="query" placeholder='Try Saree, Kurti or Search by Product Code' />
+                            <div className="midNavbar">
 
-                    </div>
-                    <div className="rightNavbar">
-                        <div className='app-dwl'>
-                            <PhoneIphoneOutlinedIcon />
-                            <span>Download App</span>
-                        </div>
-                        <div className="vertical-line">
-                            <vr />
-                        </div>
-                        <div className="seller">
-                            <span>Become a Supplier</span>
-                        </div>
-                        <div className="vertical-line"></div>
-                        <div className='profile-container'>
-                            <PermIdentityOutlinedIcon />
-                            <span>Profile</span>
-                        </div>
-                       
-                        <Link to="/mycart">
-                            <div className='cart-cont'>
-                                <ShoppingCartOutlinedIcon />
-                                <span>Cart</span>
+                                <SearchIcon />
+                                <input type="text" name="query" placeholder='Try Saree, Kurti or Search by Product Code' />
+
                             </div>
-                        </Link>
-                        
-                    </div>
+                            <div className="rightNavbar">
+                                <div className='app-dwl'>
+                                    <PhoneIphoneOutlinedIcon />
+                                    <span>Download App</span>
+                                </div>
+                                <div className="vertical-line">
+                                    <vr />
+                                </div>
+                                <div className="seller">
+                                    <span>Become a Supplier</span>
+                                </div>
+                                <div className="vertical-line"></div>
+                                <div className='profile-container'>
+                                    <PermIdentityOutlinedIcon />
+                                    <span>Profile</span>
+                                </div>
+
+                                <Link to="/checkout/cart">
+                                    <div className='cart-cont'>
+                                        <ShoppingCartOutlinedIcon />
+                                        <span>Cart</span>
+                                    </div>
+                                </Link>
+
+                            </div>
+                        </>
+                    }
                 </div>
             </div>
         </>

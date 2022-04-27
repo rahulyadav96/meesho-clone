@@ -6,8 +6,12 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import axios from "axios";
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import { Button, Typography } from '@mui/material';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import {useDispatch} from "react-redux";
+import { nanoid } from 'nanoid';
+import { addProduct } from '../../redux/cart/action';
 export const AboutProduct = (props)=>{
+    const history = useHistory()
     const {id} = useParams();
      //console.log(id)
  
@@ -32,7 +36,22 @@ export const AboutProduct = (props)=>{
             
         })
 
-    },[])
+    },[]);
+
+    const dispatch = useDispatch();
+
+    const handleClick = ()=>{
+        let item={
+            id:nanoid(4),
+            quantity:1,
+            selectedSize:size,
+            product
+        }
+
+        const action = addProduct(item);
+        dispatch(action);
+        history.push('/checkout/cart');
+    }
     return (
         <>
             <Header />
@@ -48,7 +67,7 @@ export const AboutProduct = (props)=>{
                 
                             </div>
                             <div className="button-conatiner">
-                                <Button variant='contained' style={{backgroundColor:"rgb(244, 51, 151)", width:"100%", marginTop:"20px"}}> <ShoppingCartOutlinedIcon /> Add To Cart</Button>
+                                <Button variant='contained' onClick={handleClick} style={{backgroundColor:"rgb(244, 51, 151)", width:"100%", marginTop:"20px"}}> <ShoppingCartOutlinedIcon /> Add To Cart</Button>
                             </div>
                         </div>
                      </div>
@@ -87,14 +106,7 @@ export const AboutProduct = (props)=>{
                                      </div>
                                         )
                                  }
-                                 {/* <div className={size=="Un Stitched"?"selected-size":"size"} onClick={()=>setSize("Un Stitched")}>
-                                    <span>Un Stitched</span>
-                                    
-                                 </div>
-                                 <div className={size=="X"?"selected-size":"size"} onClick={()=>setSize("X")}>
-                                    <span>X</span>
-                                    
-                                 </div> */}
+                                 
                              </div>
                          </div>
                          {/* <div className="prod-details">

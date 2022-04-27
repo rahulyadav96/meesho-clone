@@ -10,7 +10,7 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/mycart">
+        <Route path="/checkout/:task">
           <MyCart />
         </Route>
         <Route path="/aboutproduct/:id">
