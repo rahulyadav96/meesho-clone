@@ -3,9 +3,10 @@ import PhoneIphoneOutlinedIcon from '@mui/icons-material/PhoneIphoneOutlined';
 import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import './navbar.scss'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams,useHistory } from 'react-router-dom';
 
 export const Navbar = () => {
+    const history = useHistory();
     const { task } = useParams();
 
     return (
@@ -40,7 +41,7 @@ export const Navbar = () => {
                                     <span>Become a Supplier</span>
                                 </div>
                                 <div className="vertical-line"></div>
-                                <div className='profile-container'>
+                                <div className='profile-container' onClick={()=>history.push("/login")}>
                                     <PermIdentityOutlinedIcon />
                                     <span>Profile</span>
                                 </div>
