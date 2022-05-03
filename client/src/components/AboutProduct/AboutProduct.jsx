@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 import './aboutProduct.scss';
@@ -10,7 +10,9 @@ import { useHistory, useParams } from 'react-router-dom';
 import {useDispatch} from "react-redux";
 import { nanoid } from 'nanoid';
 import { addProduct } from '../../redux/cart/action';
+import { AuthContext } from '../../context/AuthContext';
 export const AboutProduct = (props)=>{
+    const {auth} = useContext(AuthContext)
     const history = useHistory()
     const {id} = useParams();
      //console.log(id)
@@ -48,6 +50,8 @@ export const AboutProduct = (props)=>{
             product
         }
 
+        if(!auth) history.push("/login");
+        
         const action = addProduct(item);
         dispatch(action);
         history.push('/checkout/cart');

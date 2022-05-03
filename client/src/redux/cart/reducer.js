@@ -1,4 +1,4 @@
-import { ADD_PRODUCT, DEL_PRODUCT, GET_PRODUCTS } from "./actionType"
+import { ADD_PRODUCT, DEL_PRODUCT, GET_PRODUCTS, PLACED } from "./actionType"
 
 const initialState = {
     products:[]
@@ -13,6 +13,10 @@ export const prodReducer = (state = initialState,action) =>{
            
             return {
                 ...state, products:state.products.filter(prod=>prod.id!=action.id)
+            }
+        case PLACED:
+            return{
+                ...state, products:[]
             }
         default:
             return state;

@@ -4,11 +4,21 @@ import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import './navbar.scss'
 import { Link, useParams,useHistory } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 export const Navbar = () => {
     const history = useHistory();
     const { task } = useParams();
-
+    const {auth, handleAuth} = useContext(AuthContext)
+    const handleClick = ()=>{
+        if(!auth) history.push("/login");
+        else {
+            alert("log out");
+            handleAuth();
+            history.push("/")
+        }
+    }
     return (
         <>
             <div id='navbar-container'>
@@ -41,7 +51,7 @@ export const Navbar = () => {
                                     <span>Become a Supplier</span>
                                 </div>
                                 <div className="vertical-line"></div>
-                                <div className='profile-container' onClick={()=>history.push("/login")}>
+                                <div className='profile-container' onClick={handleClick}>
                                     <PermIdentityOutlinedIcon />
                                     <span>Profile</span>
                                 </div>
