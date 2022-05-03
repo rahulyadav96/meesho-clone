@@ -2,11 +2,11 @@ import { useSelector } from "react-redux";
 import { Typography, Button, Card, CardHeader } from "@mui/material";
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import { Address } from "./Adress";
-
+import "./summary.scss"
 export const Summary = ({ address }) => {
-    console.log(address)
+   // console.log(address)
     const cartItems = useSelector(state => state.products);
-    console.log(cartItems)
+    //console.log(cartItems)
     return (
         <>
             <div className="summary-container">
@@ -24,6 +24,7 @@ export const Summary = ({ address }) => {
                                     <img src={item.product.thumbnail} style={{ width: "100%", height: "100%", objectFit: "fill" }} alt="" />
                                 </div>
                                 <div className="cart-item-details">
+                                   
                                     <Typography variant="h6">{item.product.productName}</Typography>
                                     <p>Size: {item.selectedSize} &nbsp; &nbsp; &nbsp; Qty: {item.quantity}</p>
                                     <p>₹ {item.product.price * item.quantity}</p>

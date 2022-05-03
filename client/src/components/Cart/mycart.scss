@@ -21,8 +21,27 @@
                     padding: 10px;
                     border-radius: 8px;
                     .item-info{
+                   
                         display: flex;
                         gap: 10px;
+                        
+                        .cart-item-details{
+                            flex-grow:1 ;
+                        
+                            .title-card{
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+    
+                                
+                            
+                            }
+                            p{
+                                padding: 0;
+                                margin: 5px 0;
+                            }
+                        }
+
                         .img-container-cart{
                             width: 100px;
                             height: 100px;
@@ -36,10 +55,6 @@
 
 
 
-                        .edit-button{
-                            flex-grow:2 ;
-                            align-items: right;
-                        }
                     }
                 }
             }
