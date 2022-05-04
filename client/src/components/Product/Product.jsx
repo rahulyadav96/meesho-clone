@@ -9,7 +9,7 @@ export const Product = () => {
     const [error, setError] = useState(false);
     useEffect(()=>{
         setLoading(true);
-        axios.get('http://localhost:3001/products')
+        axios.get('/products')
         .then(res=>{
             setLoading(false);
             setError(false);

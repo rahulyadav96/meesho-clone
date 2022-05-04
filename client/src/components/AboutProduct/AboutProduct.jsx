@@ -23,7 +23,7 @@ export const AboutProduct = (props)=>{
     const [size,setSize] = useState("")
     useEffect(()=>{
         setLoading(true);
-        axios.get(`http://localhost:3001/products/${id}`)
+        axios.get(`/products/${id}`)
         .then(res=>{
             
             setLoading(false);
