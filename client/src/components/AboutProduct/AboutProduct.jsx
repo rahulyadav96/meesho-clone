@@ -38,7 +38,7 @@ export const AboutProduct = (props)=>{
             
         })
 
-    },[]);
+    },[id]);
 
     const dispatch = useDispatch();
 

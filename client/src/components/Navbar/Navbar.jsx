@@ -4,13 +4,15 @@ import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import './navbar.scss'
 import { Link, useParams,useHistory } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
-
+import axios from "axios";
 export const Navbar = () => {
     const history = useHistory();
     const { task } = useParams();
-    const {auth, handleAuth} = useContext(AuthContext)
+    const {auth, handleAuth} = useContext(AuthContext);
+    const [query,setQuery] = useState(null);
+    const [items,setitems] = useState(null);
     const handleClick = ()=>{
         if(!auth) history.push("/login");
         else {
@@ -19,6 +21,29 @@ export const Navbar = () => {
             history.push("/")
         }
     }
+
+    const handleChange = (e)=>{
+        setQuery(e.target.value);
+
+       
+    }
+
+    useEffect(()=>{
+        if(query){
+          
+                axios.get(`/products/search?name=${query}`)
+                .then(res=>{
+                    console.log(res.data);
+                    setitems(res.data)
+                })
+                .catch(err=>{
+                   console.error(err)
+                })
+        }else{
+            setitems(null)
+        }
+    },[query])
+
     return (
         <>
             <div id='navbar-container'>
@@ -36,7 +61,7 @@ export const Navbar = () => {
                             <div className="midNavbar">
 
                                 <SearchIcon />
-                                <input type="text" name="query" placeholder='Try Saree, Kurti or Search by Product Code' />
+                                <input type="text" name="query" value={query} onChange={handleChange} placeholder='Try Saree, Kurti or Search by Product Code' />
 
                             </div>
                             <div className="rightNavbar">
@@ -67,6 +92,18 @@ export const Navbar = () => {
                         </>
                     }
                 </div>
+                {
+                    items?
+                <div className='searchResult' style={{width:"50%", boxSizing:"border-box",padding:"10px", position:"absolute",backgroundColor:"#f4f2f2", zIndex:"2000", left:"250px"}}>
+
+                {
+                    items?.map(item=><div>
+                        <p onClick={()=>history.push(`/aboutproduct/${item._id}`)} style={{cursor:"pointer"}}>{item.productName}</p>
+                    </div>)
+                }
+                </div>
+                    :""
+                }
             </div>
         </>
     )
