@@ -5,6 +5,7 @@ import { MyCart } from "./components/Cart/MyCart";
 import { AboutProduct } from "./components/AboutProduct/AboutProduct";
 import { Login } from "./components/login/Login";
 import { SuplierLogin } from "./components/Supplier/SuplierLogin";
+import { Dashboard } from "./components/Supplier/Dashboard";
 function App() {
   return (
     <div className="App">
@@ -26,6 +27,10 @@ function App() {
 
         <Route exact path="/supplierlogin">
           <SuplierLogin />
+        </Route>
+        <Route path="/dashboard">
+
+        <Dashboard/>
         </Route>
       </Switch>
     </div>

@@ -1,0 +1,14 @@
+.sup-header{
+    display:flex;
+    flex-direction: row;
+     align-items:center;
+     justify-content:space-between;
+     padding: 15px 10px;
+
+     .right{
+         display: flex;
+         justify-content: center;
+         gap: 25px;
+         align-items: center;
+     }
+}
