@@ -1,0 +1,45 @@
+#supplier-container {
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+
+    .left {
+        flex: 0.5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        height: 100vh;
+        background-image: linear-gradient(to right, #f64976, #ff85c0);
+
+    }
+
+    .right {
+        flex: 0.5;
+        width: 50%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .login-box {
+            margin: 1rem;
+            padding: 2.5rem 2rem;
+            width: 25rem;
+            background-color: #fff;
+            border-radius: 0.625rem;
+            border: 1px solid black;
+            box-sizing: border-box;
+
+            form {
+                margin-top: 1rem;
+
+                .form-title {
+                    margin-bottom: 2rem;
+                    font-size: 1.25rem;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}

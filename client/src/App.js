@@ -4,10 +4,13 @@ import { Switch, Route } from "react-router-dom"
 import { MyCart } from "./components/Cart/MyCart";
 import { AboutProduct } from "./components/AboutProduct/AboutProduct";
 import { Login } from "./components/login/Login";
+import { SuplierLogin } from "./components/Supplier/SuplierLogin";
 function App() {
   return (
     <div className="App">
       <Switch>
+      
+
         <Route exact path="/">
           <Home />
         </Route>
@@ -19,6 +22,10 @@ function App() {
         </Route>
         <Route path="/aboutproduct/:id">
           <AboutProduct />
+        </Route>
+
+        <Route exact path="/supplierlogin">
+          <SuplierLogin />
         </Route>
       </Switch>
     </div>
