@@ -7,7 +7,7 @@ import axios from "axios";
 import StarOutlinedIcon from '@mui/icons-material/StarOutlined';
 import { Button, Typography } from '@mui/material';
 import { useHistory, useParams } from 'react-router-dom';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { nanoid } from 'nanoid';
 import { addProduct } from '../../redux/cart/action';
 import { AuthContext } from '../../context/AuthContext';
@@ -20,7 +20,11 @@ export const AboutProduct = (props)=>{
     const [loading,setLoading] = useState(false);
     const [error,setError] = useState(false);
     const [product,setProduct] = useState({});
-    const [size,setSize] = useState("")
+    const [size,setSize] = useState("");
+
+    //cart otems
+    const cartItems = useSelector(state=>state.products)
+
     useEffect(()=>{
         setLoading(true);
         axios.get(`/products/${id}`)
@@ -43,18 +47,30 @@ export const AboutProduct = (props)=>{
     const dispatch = useDispatch();
 
     const handleClick = ()=>{
-        let item={
-            id:nanoid(4),
-            quantity:1,
-            selectedSize:size,
-            product
-        }
-
-        if(!auth) history.push("/login");
         
-        const action = addProduct(item);
-        dispatch(action);
-        history.push('/checkout/cart');
+        if(!auth) history.push("/login");
+        let isexist = false;
+        for(let i = 0; i<cartItems.length; i++){
+            if(cartItems[i].product._id == product._id){
+                isexist = true;
+                break;
+            }
+        }
+        if(isexist) alert("product already exist in cart")
+        
+        else{
+            let item={
+                id:nanoid(4),
+                quantity:1,
+                selectedSize:size,
+                product
+            }
+                const action = addProduct(item);
+                dispatch(action);
+                history.push('/checkout/cart');
+
+        }
+       
     }
     return (
         <>
