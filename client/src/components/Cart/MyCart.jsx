@@ -5,9 +5,9 @@ import { useHistory, useParams } from "react-router-dom"
 import { Navbar } from "../Navbar/Navbar";
 import { Address } from "./Adress";
 import "./mycart.scss";
-import { useContext, useState } from "react";
+import { useContext, useReducer, useState } from "react";
 import { Summary } from "./Summary";
-import { delProduct, placed } from "../../redux/cart/action";
+import { delProduct,updateProdut, placed } from "../../redux/cart/action";
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { AuthContext } from "../../context/AuthContext";
 export const MyCart = () => {
@@ -15,10 +15,15 @@ export const MyCart = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const { task } = useParams();
-    const {auth} = useContext(AuthContext);
+    const { auth } = useContext(AuthContext);
+
+    const [editProd,setEdit] = useState(null)
 
     const cartItems = useSelector(state => state.products);
 
+    const handlePop = ()=>{
+        setEdit(null);
+    }
     //console.log(cartItems)
 
     let totalPrice = 0;
@@ -52,9 +57,16 @@ export const MyCart = () => {
         dispatch(action);
     }
 
-    if(!auth){
+    //updateProd
+    const updateProd = () => {
+             const action = updateProdut(editProd);
+            dispatch(action);
+            setEdit(null);
+    }
+
+    if (!auth) {
         history.push("/login")
-    }else{
+    } else {
         return (
             <>
                 <Navbar />
@@ -74,7 +86,7 @@ export const MyCart = () => {
                                                 <div className="total-items">{cartItems.length}&nbsp;{cartItems.length > 1 ? "Items" : "Item"}</div>
                                             </div>
                                             <div className="items">
-    
+
                                                 {
                                                     cartItems.map(item => <div className="item" key={item.id}>
                                                         <div className="item-info">
@@ -83,16 +95,16 @@ export const MyCart = () => {
                                                             </div>
                                                             <div className="cart-item-details">
                                                                 <div className="title-card">
-    
+
                                                                     <Typography variant="h6">{item.product.productName}</Typography>
                                                                     <div className="edit-button">
-                                                                        <Button variant="outline" style={{ color: "hotpink" }}>edit</Button>
+                                                                        <Button variant="outline" onClick={()=>setEdit(item)} style={{ color: "hotpink" }}>edit</Button>
                                                                     </div>
                                                                 </div>
                                                                 <p>Size: {item.selectedSize} &nbsp; &nbsp; &nbsp; Qty: {item.quantity}</p>
                                                                 <p>₹ {item.product.price * item.quantity}</p>
                                                                 <div className="remove-button" style={{ marginTop: "10px" }}>
-                                                                    <Button variant="outline" style={{color:"hotpink"}} onClick={() => handleRemove(item.id)}> <CancelOutlinedIcon style={{fontSize:"small", marginRight:"5px"}}/>Remove</Button>
+                                                                    <Button variant="outline" style={{ color: "hotpink" }} onClick={() => handleRemove(item.id)}> <CancelOutlinedIcon style={{ fontSize: "small", marginRight: "5px" }} />Remove</Button>
                                                                 </div>
                                                             </div>
                                                             {/* <div className="edit-button">
@@ -108,7 +120,7 @@ export const MyCart = () => {
                                             <Typography variant="h6">Payment Method</Typography>
                                             <div className="select-paymentway" style={{ backgroundColor: "lightblue", display: "flex", justifyContent: "space-between", padding: "10px", borderRadius: "5px", marginTop: "20px" }}>
                                                 <div style={{ display: "flex", alignItems: "center" }}>
-    
+
                                                     <svg width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg" iconSize="20" className="Icon-sc-1iwi4w1-0 fnLXhG"><path d="M24.029 9.01v6.277L28 13.782 22.869.93a1 1 0 00-1.3-.558L0 9.011" fill="#56BB8A"></path><path d="M0 8.82h27a1 1 0 011 1v13.512a1 1 0 01-1 1H1a1 1 0 01-1-1V8.82z" fill="#56BB8A"></path><path d="M1.559 14.358c1.656-.35 2.952-1.265 3.447-2.435H23c.495 1.17 1.791 2.085 3.448 2.435v4.437c-1.657.35-2.953 1.265-3.448 2.435H5.006c-.496-1.17-1.791-2.085-3.447-2.435v-4.437z" fill="#91E5BD"></path><path d="M13.751 19.28c1.58 0 2.86-1.277 2.86-2.852a2.857 2.857 0 00-2.86-2.853 2.857 2.857 0 00-2.86 2.853 2.857 2.857 0 002.86 2.852z" fill="#56BB8A"></path><path d="M23.635 9.01L22.28 5.53l-.062-.153a4.018 4.018 0 01-3.5-1.501l-.154.062L6.296 9.01h17.34z" fill="#91E5BD"></path><path d="M7.28 16.998a.571.571 0 100-1.142.571.571 0 000 1.143zM19.865 16.998a.571.571 0 10.002-1.142.571.571 0 00-.002 1.143z" fill="#56BB8A"></path></svg>
                                                     &nbsp;&nbsp;<span>Cash on Delivery</span>
                                                 </div>
@@ -141,10 +153,38 @@ export const MyCart = () => {
                                 </div>
                             </>
                         }
-    
+
                     </div>
                 </div>
-    
+                {
+                    !editProd?"":
+                <div className="popup">
+                    <div className="popup-content">
+                        <div className="top-pop">
+                            <div className="img-container">
+                                <img src={editProd.product.thumbnail} alt="" />
+
+                            </div>
+                            <div className="prod-details">
+                                <Typography variant="h4">{editProd.product.productName}</Typography>
+                                <div className="prod-prices">Price: Rs.{editProd.quantity* editProd.product.price}</div>
+                                <div className="prodQunt">
+                                    Quntity: {editProd.quantity}
+                                </div>
+                                    <button onClick={()=>setEdit({...editProd,quantity:editProd.quantity+1})}>+</button>
+                                    <button disabled={editProd.quantity==1?true:false} onClick={()=>setEdit({...editProd,quantity:editProd.quantity-1})}>-</button>
+
+                            </div>
+                        </div>
+                            <div className="bottom-popup">
+                                <Button variant="contained" onClick={handlePop}>Cancel</Button>
+                                
+                                <Button variant="contained" onClick={updateProd}>Save</Button>
+                            </div>
+                    </div>
+                </div>
+
+                }
             </>
         )
 

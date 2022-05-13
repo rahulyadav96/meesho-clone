@@ -1,4 +1,4 @@
-import { GET_PRODUCTS,DEL_PRODUCT,ADD_PRODUCT, PLACED } from "./actionType";
+import {UPDATE_PRODUCT, GET_PRODUCTS,DEL_PRODUCT,ADD_PRODUCT, PLACED } from "./actionType";
 
 export const addProduct = (payload) =>{
     return {
@@ -24,6 +24,13 @@ export const delProduct = (id)=>{
 export const placed = ()=>{
     return {
         type:PLACED
+    }
+}
+
+export const updateProdut = (prod)=>{
+    return {
+        type:UPDATE_PRODUCT,
+        prod
     }
 }
 
