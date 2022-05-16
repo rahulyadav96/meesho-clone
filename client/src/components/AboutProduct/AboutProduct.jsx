@@ -47,34 +47,35 @@ export const AboutProduct = (props)=>{
     const dispatch = useDispatch();
 
     const handleClick = ()=>{
-        
-        if(!auth) history.push("/login");
-        let isexist = false;
-        for(let i = 0; i<cartItems.length; i++){
-            if(cartItems[i].product._id == product._id){
-                isexist = true;
-                break;
-            }
-        }
-        if(isexist) alert("product already exist in cart")
-        
-        else{
+        if(!size) alert("Please select size");
+        else  if(!auth) history.push("/login");
+        else {
 
-            if(!size) alert("Please select size");
-            else{
-
-                let item={
-                    id:nanoid(4),
-                    quantity:1,
-                    selectedSize:size,
-                    product
+            let isexist = false;
+            for(let i = 0; i<cartItems.length; i++){
+                if(cartItems[i].product._id == product._id && cartItems[i].size == size){
+                    isexist = true;
+                    break;
                 }
-                    const action = addProduct(item);
-                    dispatch(action);
-                    history.push('/checkout/cart');
             }
-
+            if(isexist) alert("product already exist in cart")
+            else{
+    
+                    let item={
+                        id:nanoid(4),
+                        quantity:1,
+                        selectedSize:size,
+                        product
+                    }
+                        const action = addProduct(item);
+                        dispatch(action);
+                        history.push('/checkout/cart');
+               
+    
+            }
         }
+       
+        
        
     }
     return (
