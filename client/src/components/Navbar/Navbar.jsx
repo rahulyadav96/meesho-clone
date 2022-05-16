@@ -56,7 +56,7 @@ export const Navbar = () => {
                         </Link>
                     </div>
                     {
-                        task === "cart"|| task=="payment"|| task=="address"|| task =="summary" ? <div>Cart Navbar</div> : <>
+                        task === "cart"|| task=="payment"|| task=="address"|| task =="summary" ? <div></div> : <>
 
                             <div className="midNavbar">
 

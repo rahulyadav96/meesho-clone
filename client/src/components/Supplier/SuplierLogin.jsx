@@ -40,7 +40,7 @@ export const SuplierLogin = () => {
                 <div className="right">
                     <div className="login-box">
                         <form >
-                            <Typography variant="h2" className="form-title">Login to your suplier panel</Typography>
+                            <Typography variant="h2" className="form-title">Login to your supplier panel</Typography>
                             <div className="eamil-field">
                                 <input type="email" name="email" onChange={handleChange} value={supplierData.email} autoComplete="none"  placeholder="Email" required={true} />
 

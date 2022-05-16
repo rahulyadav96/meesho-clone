@@ -59,15 +59,20 @@ export const AboutProduct = (props)=>{
         if(isexist) alert("product already exist in cart")
         
         else{
-            let item={
-                id:nanoid(4),
-                quantity:1,
-                selectedSize:size,
-                product
+
+            if(!size) alert("Please select size");
+            else{
+
+                let item={
+                    id:nanoid(4),
+                    quantity:1,
+                    selectedSize:size,
+                    product
+                }
+                    const action = addProduct(item);
+                    dispatch(action);
+                    history.push('/checkout/cart');
             }
-                const action = addProduct(item);
-                dispatch(action);
-                history.push('/checkout/cart');
 
         }
        

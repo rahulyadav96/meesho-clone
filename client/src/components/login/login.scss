@@ -1,0 +1,23 @@
+.otp-input{
+ 
+    border-bottom: 2px solid hotpink;
+    box-sizing: border-box;
+    padding: 6px;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    input{
+        box-sizing: border-box;
+        width: 100%;
+        padding: 5px 8px;
+        border: none;
+        text-align: center;
+        outline: none;
+        
+    }
+}
+
+.condition{
+    a{
+        color: hotpink;
+    }
+}

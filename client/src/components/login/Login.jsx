@@ -3,6 +3,7 @@ import { Navbar } from "../Navbar/Navbar"
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
+import './login.scss';
 
 export const Login = () => {
     const {auth, handleAuth}  = useContext(AuthContext)
@@ -38,7 +39,7 @@ export const Login = () => {
                     {
                         otpStatus?<>
                             <div className="otp-input">
-                                <input type="text" name="otp" value={otp}  maxLength="6" onChange={(e)=>setOtp(e.target.value)} />
+                                <input type="text" name="otp" min = "6" max="6" value={otp}  maxLength="6" onChange={(e)=>setOtp(e.target.value)} />
                             </div>
                         <Button variant="contained" onClick = {verifyOTP} style={{ width: "100%", marginTop: "20px", backgroundColor: "hotpink" }}>verify</Button>
                             
@@ -49,7 +50,7 @@ export const Login = () => {
                                 <Typography variant="h6">IN +91</Typography>
                             </div>
                             <div className="phone-input" style={{ borderBottom: "1px solid grey", flexGrow: "2" }}>
-                                <input type="number" placeholder="Phone Number" value={mob} onChange={(e)=>setMob(e.target.value)} style={{ width: "90%", border: "none", outline: "none" }} />
+                                <input type="number" max="10" placeholder="Phone Number" value={mob} onChange={(e)=>setMob(e.target.value)} style={{ width: "90%", border: "none", outline: "none" }} />
                                
                             </div>
                         </div>
