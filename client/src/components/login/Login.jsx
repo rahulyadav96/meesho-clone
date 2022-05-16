@@ -39,7 +39,7 @@ export const Login = () => {
                     {
                         otpStatus?<>
                             <div className="otp-input">
-                                <input type="text" name="otp" min = "6" max="6" value={otp}  maxLength="6" onChange={(e)=>setOtp(e.target.value)} />
+                                <input type="text" name="otp" placeholder="Enter OTP  here" min = "6" max="6" value={otp}  maxLength="6" onChange={(e)=>setOtp(e.target.value)} />
                             </div>
                         <Button variant="contained" onClick = {verifyOTP} style={{ width: "100%", marginTop: "20px", backgroundColor: "hotpink" }}>verify</Button>
                             
