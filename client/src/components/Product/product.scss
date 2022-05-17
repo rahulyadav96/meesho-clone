@@ -12,6 +12,7 @@
 
          .products-container{
              display: flex;
+             flex-direction: row;
              flex-wrap: wrap;
              width: 100%;
              box-sizing: border-box;
@@ -22,3 +23,18 @@
          }
      }
  }
+
+@media screen and (max-width:480px) {
+    #products{
+
+        .product-list{
+            width: 100%;
+
+
+            .products-container{
+
+                gap: 0;
+            }
+        }
+    }
+}

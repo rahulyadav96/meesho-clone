@@ -10,6 +10,7 @@
 
     .details-wrapper {
         display: flex;
+        flex-wrap: wrap;
         align-items: flex-start;
         justify-content: center;
         gap: 30px;
@@ -194,5 +195,20 @@
 
 
 
+    }
+}
+
+
+@media screen and (max-width:480px){
+    #product-details-container{
+
+        .details-wrapper{
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            .left,.right {
+                width: 100%;
+            };
+        }
     }
 }

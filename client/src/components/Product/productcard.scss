@@ -1,5 +1,6 @@
 .card-wrapper{
     width: 23%;
+    
     box-sizing: border-box;
     height: auto;
     border: 0.5px solid rgb(226, 221, 221);
@@ -102,4 +103,11 @@
         }
     }
 
+}
+
+@media screen and (max-width:480px) {
+    .card-wrapper{
+        width: 50%;
+
+    }
 }
