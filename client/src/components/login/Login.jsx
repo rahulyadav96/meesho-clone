@@ -32,9 +32,9 @@ export const Login = () => {
 
     return <>
         <Navbar />
-        <div className="login-main-container" style={{ display: "relative", width: "100%", height: "100%", padding: "50px 0", backgroundColor: "pink" }}>
-            <div className="login-box" style={{ display: "flex", flexDirection: "column", gap: "30px", boxSizing: "border-box", backgroundColor: "#ffffff", width: "40%", height: "500px", margin: "auto", padding: "50px" }}>
-                <Typography variant="h6">{otpStatus?`Enter OTP send to ${mob}`:"Sign Up to view your profile" }  </Typography>
+        <div className="login-main-container" >
+            <div className="login-box">
+                <Typography variant="h6" className="login-title">{otpStatus?`Enter OTP send to ${mob}`:"Sign Up to view your profile" }  </Typography>
                 <div className="input-box">
                     {
                         otpStatus?<>
@@ -47,7 +47,7 @@ export const Login = () => {
                         <span>Country</span>
                         <div className="" style={{ display: "flex", gap: "10px" }}>
                             <div className="country-code" style={{ borderBottom: "1px solid grey" }}>
-                                <Typography variant="h6">IN +91</Typography>
+                                <Typography variant="h6" className="login-title">IN +91</Typography>
                             </div>
                             <div className="phone-input" style={{ borderBottom: "1px solid grey", flexGrow: "2" }}>
                                 <input type="number" max="10" placeholder="Phone Number" value={mob} onChange={(e)=>setMob(e.target.value)} style={{ width: "90%", border: "none", outline: "none" }} />

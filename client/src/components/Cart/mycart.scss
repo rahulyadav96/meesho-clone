@@ -4,6 +4,7 @@
         margin:30px auto;
 
         display: flex;
+        flex-wrap: wrap;
         gap: 10px;
         .cart-items{
             width: 60%;
@@ -113,5 +114,24 @@
 
 
 
+    }
+}
+
+@media screen and (max-width:480px){
+    #cart-wrapper{
+
+        .container{
+            width: 100%;
+            .cart-items,.prod-summray-box,.address-wrapper,.payment-way{
+                width: 80% !important;
+                border-right: 0 !important;
+                margin: auto;
+            }
+
+            .price-details{
+                width: 80%;
+                margin: auto;
+            }
+        }
     }
 }

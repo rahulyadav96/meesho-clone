@@ -1,3 +1,25 @@
+.login-main-container{
+
+    display: relative;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: pink;
+    padding: 50px 0;
+    .login-box{
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        gap: 30px;
+        background-color: #ffffff;
+        width: 40%;
+        min-height: 500px;
+        padding: 50px;
+        margin: auto;
+        border-radius: 5px;
+
+    }
+}
+
 .otp-input{
  
     border-bottom: 2px solid hotpink;
@@ -19,5 +41,18 @@
 .condition{
     a{
         color: hotpink;
+    }
+}
+
+@media screen and (max-width:480px) {
+    .login-main-container{
+
+        .login-box{
+            width: 95%;
+
+            .login-title{
+                font-size: 1.2rem;
+            }
+        }
     }
 }
