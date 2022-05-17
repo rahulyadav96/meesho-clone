@@ -94,7 +94,7 @@ export const Navbar = () => {
                 </div>
                 {
                     items?
-                <div className='searchResult' style={{width:"50%", boxSizing:"border-box",padding:"10px", position:"absolute",backgroundColor:"#f4f2f2", zIndex:"2000", left:"250px"}}>
+                <div className='searchResult' >
 
                 {
                     items?.map(item=><div>
