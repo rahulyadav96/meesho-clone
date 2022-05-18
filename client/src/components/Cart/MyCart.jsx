@@ -7,7 +7,7 @@ import { Address } from "./Adress";
 import "./mycart.scss";
 import { useContext, useReducer, useState } from "react";
 import { Summary } from "./Summary";
-import { delProduct,updateProdut, placed } from "../../redux/cart/action";
+import { delProduct, updateProdut, placed } from "../../redux/cart/action";
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import { AuthContext } from "../../context/AuthContext";
 export const MyCart = () => {
@@ -17,11 +17,11 @@ export const MyCart = () => {
     const { task } = useParams();
     const { auth } = useContext(AuthContext);
 
-    const [editProd,setEdit] = useState(null)
-
+    const [editProd, setEdit] = useState(null)
+    const [size,setSize] = useState("");
     const cartItems = useSelector(state => state.products);
 
-    const handlePop = ()=>{
+    const handlePop = () => {
         setEdit(null);
     }
     //console.log(cartItems)
@@ -51,17 +51,26 @@ export const MyCart = () => {
 
     }
 
+    
+
     const handleRemove = (id) => {
         console.log("id", id)
         const action = delProduct(id);
         dispatch(action);
     }
 
+    //edit item handle
+
+    const handleEditItem = (item)=>{
+        setSize(item.size);
+        setEdit(item)
+    }
+
     //updateProd
     const updateProd = () => {
-             const action = updateProdut(editProd);
-            dispatch(action);
-            setEdit(null);
+        const action = updateProdut(editProd);
+        dispatch(action);
+        setEdit(null);
     }
 
     if (!auth) {
@@ -98,7 +107,7 @@ export const MyCart = () => {
 
                                                                     <Typography variant="h6">{item.product.productName}</Typography>
                                                                     <div className="edit-button">
-                                                                        <Button variant="outline" onClick={()=>setEdit(item)} style={{ color: "hotpink" }}>edit</Button>
+                                                                        <Button variant="outline" onClick={() => handleEditItem(item)} style={{ color: "hotpink" }}>edit</Button>
                                                                     </div>
                                                                 </div>
                                                                 <p>Size: {item.selectedSize} &nbsp; &nbsp; &nbsp; Qty: {item.quantity}</p>
@@ -157,32 +166,49 @@ export const MyCart = () => {
                     </div>
                 </div>
                 {
-                    !editProd?"":
-                <div className="popup">
-                    <div className="popup-content">
-                        <div className="top-pop">
-                            <div className="img-container">
-                                <img src={editProd.product.thumbnail} alt="" />
+                    !editProd ? "" :
+                        <div className="popup">
+                            <div className="popup-content">
+                                <div className="top-pop">
+                                    <div className="img-container">
+                                        <img src={editProd.product.thumbnail} alt="" />
 
-                            </div>
-                            <div className="prod-details">
-                                <Typography variant="h4">{editProd.product.productName}</Typography>
-                                <div className="prod-prices">Price: Rs.{editProd.quantity* editProd.product.price}</div>
-                                <div className="prodQunt">
-                                    Quntity: {editProd.quantity}
+                                    </div>
+                                    <div className="prod-details">
+                                        <Typography variant="h4">{editProd.product.productName}</Typography>
+                                        <div className="prod-prices">Price: Rs.{editProd.quantity * editProd.product.price}</div>
+                                        <div className="prodQunt">
+                                            Quntity: {editProd.quantity}
+                                        </div>
+                                        <div >
+
+                                            <Button variant="outlined" onClick={() => setEdit({ ...editProd, quantity: editProd.quantity + 1 })}>+</Button>
+                                            <Button variant="outlined" disabled={editProd.quantity == 1 ? true : false} onClick={() => setEdit({ ...editProd, quantity: editProd.quantity - 1 })}>-</Button>
+                                        </div>
+                                        <Typography variant="h6">Update Size</Typography>
+                                        <div className="prod-sizes">
+
+                                            {
+                                                editProd.product.sizes?.map(itemSize =>
+                                                    <div className={size == itemSize ? "selected-size" : "size"} onClick={() => setSize(`${itemSize}`)}>
+                                                        <span>{itemSize}</span>
+
+                                                    </div>
+                                                )
+                                            }
+
+                                        </div>
+
+
+                                    </div>
                                 </div>
-                                    <button onClick={()=>setEdit({...editProd,quantity:editProd.quantity+1})}>+</button>
-                                    <button disabled={editProd.quantity==1?true:false} onClick={()=>setEdit({...editProd,quantity:editProd.quantity-1})}>-</button>
+                                <div className="bottom-popup">
+                                    <Button variant="contained" style={{ backgroundColor: "hotpink" }} onClick={handlePop}>Cancel</Button>
 
+                                    <Button variant="contained" style={{ backgroundColor: "hotpink" }} onClick={updateProd}>Save</Button>
+                                </div>
                             </div>
                         </div>
-                            <div className="bottom-popup">
-                                <Button variant="contained" onClick={handlePop}>Cancel</Button>
-                                
-                                <Button variant="contained" onClick={updateProd}>Save</Button>
-                            </div>
-                    </div>
-                </div>
 
                 }
             </>
