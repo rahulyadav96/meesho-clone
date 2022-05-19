@@ -68,6 +68,8 @@ export const MyCart = () => {
 
     //updateProd
     const updateProd = () => {
+        setEdit({...editProd,size:size});
+
         const action = updateProdut(editProd);
         dispatch(action);
         setEdit(null);
