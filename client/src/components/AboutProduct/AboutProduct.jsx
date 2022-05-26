@@ -86,16 +86,16 @@ export const AboutProduct = (props)=>{
             <div id="product-details-container">
                  <div className="details-wrapper">
                      <div className="left">
-                        <div className="select-images"></div>
+                        {/* <div className="select-images"></div> */}
                         <div className="show-image">
                             <div className="image-container">
                             <img src={product.thumbnail} alt={product.productName} border="0" />
                 
                             </div>
-                            <div className="button-conatiner">
+                        </div>
+                            <div className="button-container">
                                 <Button variant='contained' onClick={handleClick} style={{backgroundColor:"rgb(244, 51, 151)", width:"100%", marginTop:"20px"}}> <ShoppingCartOutlinedIcon /> Add To Cart</Button>
                             </div>
-                        </div>
                      </div>
                      <div className="right">
                          <div className="product-headline">
