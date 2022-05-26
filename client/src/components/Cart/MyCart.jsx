@@ -18,7 +18,7 @@ export const MyCart = () => {
     const { auth } = useContext(AuthContext);
 
     const [editProd, setEdit] = useState(null)
-    const [size,setSize] = useState("");
+    const [size, setSize] = useState("");
     const cartItems = useSelector(state => state.products);
 
     const handlePop = () => {
@@ -51,7 +51,7 @@ export const MyCart = () => {
 
     }
 
-    
+
 
     const handleRemove = (id) => {
         console.log("id", id)
@@ -61,14 +61,14 @@ export const MyCart = () => {
 
     //edit item handle
 
-    const handleEditItem = (item)=>{
+    const handleEditItem = (item) => {
         setSize(item.size);
         setEdit(item)
     }
 
     //updateProd
     const updateProd = () => {
-        setEdit({...editProd,size:size});
+        setEdit({ ...editProd, size: size });
 
         const action = updateProdut(editProd);
         dispatch(action);
@@ -109,13 +109,19 @@ export const MyCart = () => {
 
                                                                     <Typography variant="h6">{item.product.productName}</Typography>
                                                                     <div className="edit-button">
-                                                                        <Button variant="outline" onClick={() => handleEditItem(item)} style={{ color: "hotpink" }}>edit</Button>
+                                                                        <Button variant="outline" onClick={() => handleEditItem(item)} style={{ color: "hotpink" }}>Edit</Button>
                                                                     </div>
                                                                 </div>
                                                                 <p>Size: {item.selectedSize} &nbsp; &nbsp; &nbsp; Qty: {item.quantity}</p>
                                                                 <p>₹ {item.product.price * item.quantity}</p>
-                                                                <div className="remove-button" style={{ marginTop: "10px" }}>
-                                                                    <Button variant="outline" style={{ color: "hotpink" }} onClick={() => handleRemove(item.id)}> <CancelOutlinedIcon style={{ fontSize: "small", marginRight: "5px" }} />Remove</Button>
+                                                                <div className="update-buttons">
+                                                                    <div className="remove-button">
+                                                                        <Button variant="outline" style={{ color: "hotpink" }} onClick={() => handleRemove(item.id)}> <CancelOutlinedIcon style={{ fontSize: "small", marginRight: "5px" }} />Remove</Button>
+                                                                    </div>
+                                                                    <div className="edit-button-mobile">
+                                                                        <Button variant="outline" onClick={() => handleEditItem(item)} style={{ color: "hotpink" }}>Edit</Button>
+                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                             {/* <div className="edit-button">

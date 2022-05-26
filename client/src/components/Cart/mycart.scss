@@ -31,15 +31,23 @@
                         
                             .title-card{
                                 display: flex;
-                                align-items: center;
+                                align-items: flex-start;
                                 justify-content: space-between;
-    
-                                
-                            
+
                             }
                             p{
                                 padding: 0;
                                 margin: 5px 0;
+                            }
+
+                            .update-buttons{
+                                display: flex;
+                                align-items: center;
+                                gap: 15px;
+
+                                .edit-button-mobile{
+                                    display: none;
+                                }
                             }
                         }
 
@@ -116,7 +124,7 @@
             
             img{
                 width: 100%;
-                object-fit: fill;
+                object-fit: cover;
             }
         }
 
@@ -185,11 +193,22 @@
                 margin: auto;
             }
 
+            .cart-items{
+                .edit-button{
+                    display: none;
+                }
+                .update-buttons{
+
+                    .edit-button-mobile{
+                        display: block !important;
+                    }
+                }
+            }
             .price-details{
                 width: 80%;
                 margin: auto;
             }
-
+           
             
         }
     }
