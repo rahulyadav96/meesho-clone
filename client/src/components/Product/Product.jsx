@@ -26,7 +26,7 @@ export const Product = () => {
                 <h4>Products for you</h4>
                 <div className="products-container">
                     {
-                        products?.map(product=><ProductCard product={product} key={nanoid(4)} />)
+                        products?.map(product=><ProductCard product={product}  />)
                     }
                 </div>
             </div>
